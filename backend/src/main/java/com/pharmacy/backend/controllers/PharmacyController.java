@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-
-
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -22,19 +20,19 @@ public class PharmacyController {
         this.medicineRepository = medicineRepository;
     }
 
-    //Endpoint 1: LogIn, lo usara selenium
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials) {
         Map<String, String> response = new HashMap<>();
-        if ("admin_farmacia".equals(credentials.get("usuario")) && "Password123!".equals(credentials.get("password"))) {
+        if ("admin_farmacia".equals(credentials.get("username")) && "Password123!".equals(credentials.get("password"))) {
             response.put("status", "success");
             return ResponseEntity.ok(response);
-            
         }
-        response.put("status", "success");
+
+        response.put("status", "error");
         return ResponseEntity.status(401).body(response);
     }
-
+    
     @PostMapping("/inventario/retiro")
     public ResponseEntity<Map<String, Object>> retirarInventario(@RequestBody Map<String, Object> request) {
         Map<String, Object> response = new HashMap<>();
