@@ -4,6 +4,7 @@ import com.pharmacy.backend.models.Medicine;
 import com.pharmacy.backend.repositories.MedicineRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.pharmacy.backend.dto.MedicineDTO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +32,15 @@ public class PharmacyController {
 
         response.put("status", "error");
         return ResponseEntity.status(401).body(response);
+    }
+
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/medicine/register")
+    public ResponseEntity<Map<String, String>> registerMedicine(@RequestBody MedicineDTO request) {
+        try {
+            
+        }
     }
     
     @PostMapping("/inventario/retiro")

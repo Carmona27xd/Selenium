@@ -1,6 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 export default function Dashboard() {
+
+  const router = useRouter();
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4 font-sans">
       
@@ -26,7 +31,7 @@ export default function Dashboard() {
         </button>
 
         <button 
-          onClick={() => console.log("Navegando a Inventario...")}
+          onClick= {() => router.push('/register-medicine')}
           className="group flex flex-col items-center justify-center w-64 h-64 bg-gradient-to-tr from-emerald-600 to-emerald-400 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
           data-testid="btn-inventario"
         >
@@ -35,7 +40,7 @@ export default function Dashboard() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
           </svg>
           <span className="text-2xl font-bold text-white tracking-wide text-center leading-tight">
-            Gestión de<br/>inventario
+            Registrar<br/>medicamento
           </span>
         </button>
 
